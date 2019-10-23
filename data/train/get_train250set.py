@@ -29,7 +29,7 @@ def main():
     data = pd.read_csv("dataset250.csv")
     imgurls = data.loc[:, ['imageid', 'url']]
     imgunq = imgurls.drop_duplicates()
-    dir = "/home/thaarini_k/dataset250/"
+    dir = os.path.abspath(os.path.dirname(__file__)) + '/dataset250/'
 
     imgtup = [tuple(x) for x in imgunq.values]
 
