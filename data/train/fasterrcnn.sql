@@ -6,7 +6,7 @@ create table ctrnimgurl (id serial primary key, imageid varchar(50), subset varc
 create table labeldesc(id serial primary key, labelname varchar(50), labeldesc varchar(50));
 COPY ctrnimglabel (imageid, source, labelname, confidence) FROM '/$HOME$/oid_fasterrcnn/data/train/challenge-2019-train-detection-human-imagelabels.csv' DELIMITER ',' CSV HEADER;
 COPY ctrnimgbbox (imageid, source, labelname, confidence, xmin1, xmax1, ymin1, ymax1, isoccluded, istruncated, isgroupof, isdepiction, isinside) FROM '/$HOME$/oid_fasterrcnn/data/train/challenge-2019-train-detection-bbox.csv' DELIMITER ',' CSV HEADER;
-COPY ctrnimgurl (imageid , subset, url , landurl , license , authorurl, author , origsize , origmd5 , thumbnail , rotation) FROM '/home/mkarthick2714/train/train-images-boxable-with-rotation.csv' DELIMITER ',' CSV HEADER;
+COPY ctrnimgurl (imageid , subset, url , landurl , license , authorurl, author , origsize , origmd5 , thumbnail , rotation) FROM '/$HOME$/oid_fasterrcnn/data/train/newFile.csv' DELIMITER ',' CSV HEADER;
 COPY labeldesc (labelname, labeldesc) FROM '/$HOME$/oid_fasterrcnn/data/train/challenge-2019-classes-description-500.csv' DELIMITER ',' CSV HEADER;
 create table ctrnimgbboxcls as select a.id, a.imageid, a.labelname, b.labeldesc, a.confidence, a.xmin1, a.xmax1, a.ymin1, a.ymax1, a.isoccluded, a.istruncated, a.isgroupof, a.isdepiction, a.isinside from ctrnimgbbox a left join labeldesc b on a.labelname = b.labelname; 
 
