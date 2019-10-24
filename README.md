@@ -44,3 +44,15 @@
       Here --bs is the batch size which is 4 assuming there is only one GPU in your system. Up the batch size by multiples of 4 as you add  more GPUs to your system. For example, if you have 8 GPUs use batch size of 32. If the code fails due to low memory on GPU, reduce the batch size on each GPU to 3 where --bs will be 24 for 8 GPUs. 
       
 16. The trained model will be available in the path ./models/res101/oid/
+
+## Steps to validate the trained model on the validation set of OID:
+
+1. create folder ./data/valoiddata/validation
+
+2. Download the file validation-images-with-rotation.csvfrom [here](https://storage.googleapis.com/openimages/2018_04/validation/validation-images-with-rotation.csv) and place it in the folder ./data/valoiddata
+
+3. Copy the entire validation set of OID from AWS s3 bucket which is [here](https://s3.console.aws.amazon.com/s3/buckets/open-images-dataset/validation/?region=ap-south-1) and place it in ./data/valoiddata/validation
+
+4. 
+
+
