@@ -11,3 +11,4 @@ COPY labeldesc (labelname, labeldesc) FROM '/$HOME$/oid_fasterrcnn/data/train/ch
 create table ctrnimgbboxcls as select a.id, a.imageid, a.labelname, b.labeldesc, a.confidence, a.xmin1, a.xmax1, a.ymin1, a.ymax1, a.isoccluded, a.istruncated, a.isgroupof, a.isdepiction, a.isinside from ctrnimgbbox a left join labeldesc b on a.labelname = b.labelname; 
 create table ctrnimglabelcls as select a.id, a.imageid, a.labelname, b.labeldesc, a.confidence from ctrnimglabel a left join labeldesc b on a.labelname = b.labelname; 
 create table ctrnimgclsurl as select a.id, a.imageid, a.labelname, a.labeldesc, b.url, a.confidence from ctrnimglabelcls a left join ctrnimgurl b on a.imageid= b.imageid;
+create table dataset250 (id integer primary key, imageid varchar(50), labeldesc varchar(50), url varchar(200));
