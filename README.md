@@ -49,10 +49,14 @@
 
 1. create folder ./data/valoiddata/validation
 
-2. Download the file validation-images-with-rotation.csvfrom [here](https://storage.googleapis.com/openimages/2018_04/validation/validation-images-with-rotation.csv) and place it in the folder ./data/valoiddata
+2. Download the file validation-images-with-rotation.csv from [here](https://storage.googleapis.com/openimages/2018_04/validation/validation-images-with-rotation.csv) and place it in the folder ./data/valoiddata
 
-3. Copy the entire validation set of OID from AWS s3 bucket which is [here](https://s3.console.aws.amazon.com/s3/buckets/open-images-dataset/validation/?region=ap-south-1) and place it in ./data/valoiddata/validation
+3. Copy the entire validation set of OID from aws s3 bucket which is [here](https://s3.console.aws.amazon.com/s3/buckets/open-images-dataset/validation/?region=ap-south-1) and place it in ./data/valoiddata/validation
 
-4. 
+4. Download the trained Faster R-CNN model from [here](https://storage.cloud.google.com/oidtrainedmodel/faster_rcnn_1_20_13908.pth?authuser=1) and place it in the folder ./models/res101/oid
+
+5. cd to the root oid_fasterrcnn directory and run the below command to validate the model in background against the OID validation set. 
+      nohup bash -c "python -u testoid_net.py --cuda --net res101" &
+6. After the validation is completed, valsetpreds.csv file will be created which contains the bounding box detections of our model. In order to evaluate the mAP for this detection use valsetpreds.csv file and follow the steps given [here](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/challenge_evaluation.md#object-detection-track). This tutorial will help you to evaluate the mAP for each class of the OID.
 
 
