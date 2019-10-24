@@ -1,4 +1,4 @@
-# A *Faster* Pytorch Implementation of Faster R-CNN
+# Pytorch Implementation of Faster R-CNN for Google open images dataset 2019
 
 ## Introduction
 
