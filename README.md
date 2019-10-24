@@ -56,7 +56,7 @@
 4. Download the trained Faster R-CNN model from [here](https://storage.cloud.google.com/oidtrainedmodel/faster_rcnn_1_20_13908.pth?authuser=1) and place it in the folder ./models/res101/oid
 
 5. cd to the root oid_fasterrcnn directory and run the below command to validate the model in background against the OID validation set. 
-      nohup bash -c "python -u testoid_net.py --cuda --net res101" &
+      nohup bash -c "python -u testoid_net.py --cuda --net res101" & .  
    Please be advised that the code testoid_net.py is configured to use model defined with command line arguments checksession 1, checkepoch 20 and checkpoint 13908, which is the same pretrained Faster R-CNN model placed in ./models/res101/oid. You can change this to use your own trained model for evaluation on the validation set.
    
 6. After the validation is completed, valsetpreds.csv file will be created which contains the bounding box detections of our model. In order to evaluate the mAP for this detection use valsetpreds.csv file and follow the steps given [here](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/challenge_evaluation.md#object-detection-track). This tutorial will help you to evaluate the mAP for each class of the OID.
