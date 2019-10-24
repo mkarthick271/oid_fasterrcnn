@@ -37,7 +37,7 @@ def load_oid_annotation(i, img, img_size, classdict):
     print("Loading annotation for image {} of {}".format(i+1, img_size))                                                                
     boxes = np.zeros((1, 4), dtype=np.float32)
     gt_classes = np.zeros((1), dtype=np.int32)
-      
+    root_dir = os.path.abspath(os.path.dirname(__file__))  
     img_path = os.path.join(root_dir + '/data/valoiddata/validation', img+'.jpg')
     try:
         img_dim = imread(img_path)
@@ -52,6 +52,7 @@ def load_oid_annotation(i, img, img_size, classdict):
     return {'boxes': boxes, 'gt_classes': gt_classes, 'img_id': img, 'image': img_path,  'width': width, 'height': height, 'flipped': flipped}
 
 def gt_oid_roidb(img_names, img_size, classdict):
+    root_dir = os.path.abspath(os.path.dirname(__file__))
     cache_file = os.path.join(root_dir + '/data/valoiddata/', 'valoid' + '_gt_roidb.pk')
     if os.path.exists(cache_file):
         with open(cache_file, 'rb') as fid:
