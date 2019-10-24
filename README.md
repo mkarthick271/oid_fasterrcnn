@@ -6,11 +6,11 @@
   
  The image labels and bounding boxes and other information about the images are given as .csv files. To analyze the huge amount of information given in the .csv files for this dataset, I have used PostgreSQL to which the .csv files are loaded to tables. Now, the dataset can be analyzed by quering with SQL statements, like to know the number of images per object class, the images which contains the largest number of bounding boxes and images which contain the largest number of unique object class labels etc. 
  
- Once the data is loaded to the tables in PostgreSQL, I have randomly sampled 250 images per object class and used these images to train the Faster R-CNN network. It took around 3 days to fully train the model for 20 epochs for 112,000 images on 2 nVidia V100 GPUS with a batch size of 8(4 images on each GPU) on Google cloud platform. Next I validated the model on 41,620 validation set of OID and got an **mAP of 39%** which is the baseline for this model. No image augmentations were used and plain Faster R-CNN network was used. This is a work in progress, and by using image augemntations and by using more latest networks the mAP is expected to improve. 
+ Once the data is loaded to the tables in PostgreSQL, I have randomly sampled 250 images per object class and used these images to train the Faster R-CNN network. It took around 3 days to fully train the model for 20 epochs for 112,000 images on 2 nVidia V100 GPUS with a batch size of 8(4 images on each GPU) on Google cloud platform. Next I validated the model on 41,620 validation set of OID and got an **mAP of 39%** which is the baseline for this model. No image augmentations were used and plain Faster R-CNN network was used. This is a work in progress, and by using image augmentations and by using more latest networks the mAP is expected to improve. 
 
 
 ## Installation/Data Preparation(Please follow the below steps exactly in same sequence to train the network successfully) 
-1. clone the code to your home directory
+1. clone the code to your home directory - 
   git clone https://github.com/mkarthick271/oid_fasterrcnn.git
 2. Install PostgreSQL and set the password of user postgres to cts-0000
 
@@ -30,7 +30,7 @@
 
 10. Run command 'psql -U postgres -h 127.0.0.1 -a -f fasterrcnn.sql' command to create the necessary tables and load the .csv data to the tables in PostgreSQL. Enter password as cts-0000 if prompted
 
-11. Run the program dbcon.py to generate a set of 250 images for each of the 500 object classes. Here we are randomly sampling 250 images of each class which will be used to train the network.
+11. Run the program dbcon.py to randomly sample a set of 250 images for each of the 500 object classes. 
 
 12. Run command 'psql -U postgres -h 127.0.0.1 -a -f dataset250.sql' command to create table for the ground truth bounding boxes for the sampled training images and load the data. Enter password as cts-0000 if prompted.
 
@@ -43,4 +43,4 @@
       
       Here --bs is the batch size which is 4 assuming there is only one GPU in your system. Up the batch size by multiples of 4 as you add  more GPUs to your system. For example, if you have 8 GPUs use batch size of 32. If the code fails due to low memory on GPU, reduce the batch size on each GPU to 3 where --bs will be 24 for 8 GPUs. 
       
- 16. The trained model will be available in the path ./models/res101/oid/
+16. The trained model will be available in the path ./models/res101/oid/
