@@ -107,7 +107,7 @@ def load_oid_annotation(i, img, imgbbox, img_size, keyed_parent, keyed_child, cl
     perimgbbox.columns=['imageid', 'labeldesc', 'xmin1', 'xmax1', 'ymin1', 'ymax1']                             
     boxes = np.zeros((perimgbbox.shape[0], 4), dtype=np.float32)
     gt_classes = np.zeros((perimgbbox.shape[0]), dtype=np.int32)
-      
+    root_dir = os.path.abspath(os.path.dirname(__file__)) 
     img_path = os.path.join(root_dir + '/data/train/dataset250', img+'.jpg')
     try:
         img_dim = imread(img_path)
@@ -134,6 +134,7 @@ def load_oid_annotation(i, img, imgbbox, img_size, keyed_parent, keyed_child, cl
     return {'boxes': boxes, 'gt_classes': gt_classes, 'img_id': img, 'image': img_path,  'width': width, 'height': height, 'flipped': flipped}
 
 def gt_oid_roidb(img_names, imgbbox, img_size, keyed_parent, keyed_child, classdict):
+    root_dir = os.path.abspath(os.path.dirname(__file__)) 
     cache_file = os.path.join(root_dir + '/data/train/', 'oid' + '_gt_roidb.pk')
     if os.path.exists(cache_file):
         with open(cache_file, 'rb') as fid:
