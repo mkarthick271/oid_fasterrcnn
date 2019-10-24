@@ -1,7 +1,8 @@
 # --------------------------------------------------------
-# Pytorch multi-GPU Faster R-CNN
+# Pytorch multi-GPU Faster R-CNN for Google Open images dataset 2019
 # Licensed under The MIT License [see LICENSE for details]
-# Written by Jiasen Lu, Jianwei Yang, based on code from Ross Girshick
+# Adapted for Google OID dataset by Karthikan Munuswamy based on code by 
+# by Jiasen Lu, Jianwei Yang and Ross Girshick
 # --------------------------------------------------------
 from __future__ import absolute_import
 from __future__ import division
@@ -101,16 +102,16 @@ def parse_args():
 # resume trained model
   parser.add_argument('--r', dest='resume',
                       help='resume checkpoint or not',
-                      default=True, type=bool)
+                      default=False, type=bool)
   parser.add_argument('--checksession', dest='checksession',
                       help='checksession to load model',
                       default=1, type=int)
   parser.add_argument('--checkepoch', dest='checkepoch',
                       help='checkepoch to load model',
-                      default=5, type=int)
+                      default=1, type=int)
   parser.add_argument('--checkpoint', dest='checkpoint',
                       help='checkpoint to load model',
-                      default=13908, type=int)
+                      default=0, type=int)
 # log and diaplay
   parser.add_argument('--use_tfb', dest='use_tfboard',
                       help='whether use tensorboard',
