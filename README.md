@@ -38,8 +38,8 @@
 
 14. Copy the pretrained backbone for resnet from [here](https://www.dropbox.com/s/iev3tkbz5wyyuz9/resnet101_caffe.pth?dl=0) and keep it in data/pretrained_model folder and make sure to change the name of the downloaded pretrained model to resnet101_caffe.pth
 
-15. cd to the root oid_fasterrcnn directory and run the below command to train the model in background. 
-      nohup bash -c "python -u trainval_net.py --cuda --net res101 --bs 4" &
+15. cd to the root oid_fasterrcnn directory and run the below command to train the model in background.   
+           nohup bash -c "python -u trainval_net.py --cuda --net res101 --bs 4" &
       
       Here --bs is the batch size which is 4 assuming there is only one GPU in your system. Up the batch size by multiples of 4 as you add  more GPUs to your system. For example, if you have 8 GPUs use batch size of 32. If the code fails due to low memory on GPU, reduce the batch size on each GPU to 3 where --bs will be 24 for 8 GPUs. 
       
