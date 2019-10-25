@@ -34,7 +34,7 @@
 
 12. Run command 'psql -U postgres -h 127.0.0.1 -a -f dataset250.sql' command to create table for the ground truth bounding boxes for the sampled training images and load the data. Enter password as cts-0000 if prompted.
 
-13. Create a folder named 'dataset250' and run the program get_train250set.py to download the sampled images from the aws s3 bucket. This might take a long time or less, depending upon the number of  images you are downloading from aws.
+13. Create a folder named 'dataset250' under ./data/train and run the program get_train250set.py to download the sampled images from the aws s3 bucket. This might take a long time or less, depending upon the number of  images you are downloading from aws.
 
 14. Copy the pretrained backbone for resnet from [here](https://www.dropbox.com/s/iev3tkbz5wyyuz9/resnet101_caffe.pth?dl=0) and keep it in data/pretrained_model folder and make sure to change the name of the downloaded pretrained model to resnet101_caffe.pth
 
