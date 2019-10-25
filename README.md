@@ -51,7 +51,7 @@
 
 2. Download the file validation-images-with-rotation.csv from [here](https://storage.googleapis.com/openimages/2018_04/validation/validation-images-with-rotation.csv) and place it in the folder ./data/valoiddata
 
-3. Copy the entire validation set of OID from aws s3 bucket which is [here](https://s3.console.aws.amazon.com/s3/buckets/open-images-dataset/validation/?region=ap-south-1) and place it in ./data/valoiddata/validation
+3. Copy the entire validation set of OID from aws s3 bucket which is [here](https://s3.console.aws.amazon.com/s3/buckets/open-images-dataset/validation/?region=ap-south-1) and place it in ./data/valoiddata/validation. You might need AWS login to access these images and copy them. 
 
 4. Download the trained Faster R-CNN model from [here](https://storage.cloud.google.com/oidtrainedmodel/faster_rcnn_1_20_13908.pth?authuser=1) and place it in the folder ./models/res101/oid
 
